@@ -4,24 +4,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
     app:startDestination="@id/fragmentOne">
-
     <fragment
         android:id="@+id/fragmentOne"
-        android:name="com.example.navigationbetweenfragments.FragmentOne"
-        android:label="FragmentOne" >
+        android:name="com.example.recyclerviewwithnav.FragmentOne"
+        android:label="FragmentOne"
+        app:startDestination="@id/fragmentOne">
+        <action
+            android:id="@+id/action_fragmentOne_to_secondActivity2"
+            app:destination="@id/secondActivity2" />
         <action
             android:id="@+id/action_fragmentOne_to_fragmentTwo"
             app:destination="@id/fragmentTwo" />
-        <action
-            android:id="@+id/action_fragmentOne_to_secondActivity"
-            app:destination="@id/secondActivity" />
     </fragment>
     <fragment
         android:id="@+id/fragmentTwo"
-        android:name="com.example.navigationbetweenfragments.FragmentTwo"
+        android:name="com.example.recyclerviewwithnav.FragmentTwo"
         android:label="FragmentTwo" />
     <activity
-        android:id="@+id/secondActivity"
+        android:id="@+id/secondActivity2"
         android:name="com.example.recyclerviewwithnav.SecondActivity"
-        android:label="SecondActivity" />
+        android:label="activity_second"
+        tools:layout="@layout/activity_second" />
 </navigation>

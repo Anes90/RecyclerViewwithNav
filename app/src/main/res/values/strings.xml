@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Navigation Between Fragments</string>
+    <string name="app_name">RecyclerView with Nav</string>
     <string name="title_activity">Go to Second Activity</string>
     <string name="title_fragment">Go to Second Fragment</string>
     <string name="navigate_to_the_second_activity">Navigate to the second activity</string>

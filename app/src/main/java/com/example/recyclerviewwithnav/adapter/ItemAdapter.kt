@@ -17,7 +17,7 @@ class ItemAdapter(
         private val context: Context,
         private val dataset: List<ListItemModel>,
         private val cellClickListener: CellClickListener,
-        private val toActivity: Int = R.id.action_fragmentOne_to_secondActivity,
+        private val toActivity: Int = R.id.action_fragmentOne_to_secondActivity2,
         private val toFragment: Int = R.id.action_fragmentOne_to_fragmentTwo
 ) : RecyclerView.Adapter<ItemAdapter.ItemViewHolder>() {
     class ItemViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
