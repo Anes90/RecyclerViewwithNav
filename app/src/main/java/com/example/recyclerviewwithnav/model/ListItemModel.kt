@@ -5,6 +5,6 @@ data class ListItemModel(
         //@StringRes val stringTitleResourceId: Int,
         //@DrawableRes val iconResourceId: Int,
         val stringTitle: String,
-        //val icon: Drawable,
+        val icon: Int,
         var item_type: Int
 )

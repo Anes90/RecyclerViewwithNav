@@ -75,21 +75,24 @@ private const val ITEM_TYPE_FRAGMENT: Int = 1
 
 class ItemAdapter(
         private val context: Context,
-        var listItems: List<ListItemModel>,
+        //var listItems: List<ListItemModel>,
+        private val dataset: List<ListItemModel>,
         private val cellClickListener: CellClickListener,
         private val toActivity: Int = R.id.action_fragmentOne_to_secondActivity2,
         private val toFragment: Int = R.id.action_fragmentOne_to_fragmentTwo
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+
     class ActivityViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(listItemModel: ListItemModel) {
             itemView.item_title_activity.text = listItemModel.stringTitle
-            //itemView.imageViewActivity.drawable = listItemModel.setImageResource()
+            itemView.imageViewActivity.setImageResource(listItemModel.icon)
         }
     }
 
     class FragmentViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(listItemModel: ListItemModel) {
             itemView.item_title_fragment.text = listItemModel.stringTitle
+            itemView.imageViewFragment.setImageResource(listItemModel.icon)
         }
     }
 
@@ -104,7 +107,7 @@ class ItemAdapter(
     }
 
     override fun getItemViewType(position: Int): Int {
-        return if (listItems[position].item_type == 0) {
+        return if (/*listItems*/dataset[position].item_type == 0) {
             ITEM_TYPE_ACTIVITY
         } else {
             ITEM_TYPE_FRAGMENT
@@ -113,12 +116,12 @@ class ItemAdapter(
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (getItemViewType(position) == ITEM_TYPE_ACTIVITY) {
-            (holder as ActivityViewHolder).bind(listItems[position])
+            (holder as ActivityViewHolder).bind(/*listItems*/dataset[position])
             holder.itemView.setOnClickListener {
                 cellClickListener.onCellClickListener(toActivity)
             }
         } else {
-            (holder as FragmentViewHolder).bind(listItems[position])
+            (holder as FragmentViewHolder).bind(/*listItems*/dataset[position])
             holder.itemView.setOnClickListener {
                 cellClickListener.onCellClickListener(toFragment)
             }
@@ -126,6 +129,6 @@ class ItemAdapter(
     }
 
     override fun getItemCount(): Int {
-        return listItems.size
+        return /*listItems*/dataset.size
     }
 }
