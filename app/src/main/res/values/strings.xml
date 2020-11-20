@@ -6,4 +6,6 @@
     <string name="welcome_to_fragment_two">Welcome to Fragment Two</string>
     <string name="this_is_second_activity">This is Second Activity</string>
     <string name="navigate_to_the_second_fragment">Navigate to the Second Fragment</string>
+    <string name="android_icon_black">Android Icon Black</string>
+    <string name="textview">TextView</string>
 </resources>

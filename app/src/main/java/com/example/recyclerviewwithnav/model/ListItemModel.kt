@@ -1,7 +1,10 @@
 package com.example.recyclerviewwithnav.model
 
-import androidx.annotation.StringRes
 
 data class ListItemModel(
-    @StringRes val stringTitleResourceId: Int,
+        //@StringRes val stringTitleResourceId: Int,
+        //@DrawableRes val iconResourceId: Int,
+        val stringTitle: String,
+        //val icon: Drawable,
+        var item_type: Int
 )
