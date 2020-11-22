@@ -2,14 +2,11 @@ package com.example.recyclerviewwithnav.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.recyclerviewwithnav.R
 import com.example.recyclerviewwithnav.`interface`.CellClickListener
 import com.example.recyclerviewwithnav.model.ListItemModel
-import kotlinx.android.synthetic.main.list_item_activity.view.*
-import kotlinx.android.synthetic.main.list_item_fragment.view.*
 
 
 // class ItemAdapter(
@@ -81,20 +78,6 @@ class ItemAdapter(
         private val toActivity: Int = R.id.action_fragmentOne_to_secondActivity2,
         private val toFragment: Int = R.id.action_fragmentOne_to_fragmentTwo
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-
-    class ActivityViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        fun bind(listItemModel: ListItemModel) {
-            itemView.item_title_activity.text = listItemModel.stringTitle
-            itemView.imageViewActivity.setImageResource(listItemModel.icon)
-        }
-    }
-
-    class FragmentViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        fun bind(listItemModel: ListItemModel) {
-            itemView.item_title_fragment.text = listItemModel.stringTitle
-            itemView.imageViewFragment.setImageResource(listItemModel.icon)
-        }
-    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         if (viewType == ITEM_TYPE_ACTIVITY) {
