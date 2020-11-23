@@ -1,4 +1,4 @@
-package com.example.recyclerviewwithnav.`interface`
+package com.example.recyclerviewwithnav.interfaces
 
 interface CellClickListener {
     fun onCellClickListener(id: Int)

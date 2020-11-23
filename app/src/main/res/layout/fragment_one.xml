@@ -4,6 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <variable
+            name="imageViewUri"
+            type="String" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -16,6 +19,16 @@
             android:layout_height="match_parent"
             app:layoutManager="LinearLayoutManager"
             android:scrollbars="vertical" />
+
+        <ImageView
+            android:id="@+id/fragment_one_imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="280dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/recycler_view"
+            app:loadImage="@{imageViewUri}" />
         <!--<Button
             android:id="@+id/buttonFirstFragment"
             android:layout_width="wrap_content"

@@ -6,10 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.example.recyclerviewwithnav.`interface`.CellClickListener
 import com.example.recyclerviewwithnav.adapter.ItemAdapter
 import com.example.recyclerviewwithnav.data.Datasource
 import com.example.recyclerviewwithnav.databinding.FragmentOneBinding
+import com.example.recyclerviewwithnav.interfaces.CellClickListener
 
 class FragmentOne : Fragment(), CellClickListener
 {
@@ -29,6 +29,8 @@ class FragmentOne : Fragment(), CellClickListener
        val myDataset = Datasource().loadListItemModels()
        val recyclerView = binding.recyclerView
        recyclerView.adapter = ItemAdapter(requireContext(), myDataset, this)
+       binding.imageViewUri = "https://cdn.spacetelescope.org/archives/images/screen/heic1302a.jpg"
+
 
        return myView
     }

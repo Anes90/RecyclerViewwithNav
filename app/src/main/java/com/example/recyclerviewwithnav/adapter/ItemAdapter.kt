@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.recyclerviewwithnav.R
-import com.example.recyclerviewwithnav.`interface`.CellClickListener
+import com.example.recyclerviewwithnav.interfaces.CellClickListener
 import com.example.recyclerviewwithnav.databinding.ListItemActivityBinding
 import com.example.recyclerviewwithnav.databinding.ListItemFragmentBinding
 import com.example.recyclerviewwithnav.model.ListItemModel
