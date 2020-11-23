@@ -6,6 +6,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.recyclerviewwithnav.R
 import com.example.recyclerviewwithnav.`interface`.CellClickListener
+import com.example.recyclerviewwithnav.databinding.ListItemActivityBinding
+import com.example.recyclerviewwithnav.databinding.ListItemFragmentBinding
 import com.example.recyclerviewwithnav.model.ListItemModel
 
 
@@ -81,11 +83,15 @@ class ItemAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         if (viewType == ITEM_TYPE_ACTIVITY) {
-            val view = LayoutInflater.from(parent.context).inflate(R.layout.list_item_activity, parent, false)
-            return ActivityViewHolder(view)
+            //val view = LayoutInflater.from(parent.context).inflate(R.layout.list_item_activity, parent, false)
+            //return ActivityViewHolder(view)
+            val inflater = LayoutInflater.from(parent.context)
+            val binding = ListItemActivityBinding.inflate(inflater)
+            return ActivityViewHolder(binding)
         } else {
-            val view = LayoutInflater.from(parent.context).inflate(R.layout.list_item_fragment, parent, false)
-            return FragmentViewHolder(view)
+            val inflater = LayoutInflater.from(parent.context)
+            val binding = ListItemFragmentBinding.inflate(inflater)
+            return FragmentViewHolder(binding)
         }
     }
 

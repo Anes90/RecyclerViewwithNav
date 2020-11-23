@@ -1,13 +1,15 @@
 package com.example.recyclerviewwithnav.adapter
 
-import android.view.View
 import androidx.recyclerview.widget.RecyclerView
+import com.example.recyclerviewwithnav.databinding.ListItemFragmentBinding
 import com.example.recyclerviewwithnav.model.ListItemModel
-import kotlinx.android.synthetic.main.list_item_fragment.view.*
 
-class FragmentViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+class FragmentViewHolder(val binding: ListItemFragmentBinding) : RecyclerView.ViewHolder(binding.root) {
     fun bind(listItemModel: ListItemModel) {
-        itemView.item_title_fragment.text = listItemModel.stringTitle
-        itemView.imageViewFragment.setImageResource(listItemModel.icon)
+        //itemView.item_title_fragment.text = listItemModel.stringTitle
+        //itemView.imageViewFragment.setImageResource(listItemModel.icon)
+        binding.itemTitleFragment.text = listItemModel.stringTitle
+        binding.imageViewFragment.setImageResource(listItemModel.icon)
+        binding.executePendingBindings()
     }
 }
