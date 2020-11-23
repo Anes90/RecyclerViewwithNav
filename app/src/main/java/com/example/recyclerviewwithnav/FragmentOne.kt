@@ -13,12 +13,14 @@ import com.example.recyclerviewwithnav.databinding.FragmentOneBinding
 
 class FragmentOne : Fragment(), CellClickListener
 {
+   private lateinit var binding: FragmentOneBinding
+
    override fun onCreateView(
        inflater: LayoutInflater,
        container: ViewGroup?,
        savedInstanceState: Bundle?): View {
 
-       val binding: FragmentOneBinding = FragmentOneBinding.inflate(inflater, container, false)
+       binding = FragmentOneBinding.inflate(inflater, container, false)
 
        val myView: View = binding.root
        //val myView: View = inflater.inflate(R.layout.fragment_one, container, false)

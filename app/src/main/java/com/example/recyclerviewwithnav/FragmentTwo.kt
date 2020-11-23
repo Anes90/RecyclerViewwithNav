@@ -5,11 +5,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.example.recyclerviewwithnav.databinding.FragmentTwoBinding
 
 class FragmentTwo : Fragment(){
+    private lateinit var binding: FragmentTwoBinding
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_two, container, false)
+        binding = FragmentTwoBinding.inflate(inflater, container, false)
+
+        binding.secondFragmentTitle = "Welcome to Fragment Two"
+
+        return binding.root
     }
 }
