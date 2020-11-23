@@ -106,12 +106,12 @@ class ItemAdapter(
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (getItemViewType(position) == ITEM_TYPE_ACTIVITY) {
             (holder as ActivityViewHolder).bind(/*listItems*/dataset[position])
-            holder.itemView.setOnClickListener {
+            holder.binding.listItemActivityConstraint.setOnClickListener {
                 cellClickListener.onCellClickListener(toActivity)
             }
         } else {
             (holder as FragmentViewHolder).bind(/*listItems*/dataset[position])
-            holder.itemView.setOnClickListener {
+            holder.binding.listItemFragmentConstraint.setOnClickListener {
                 cellClickListener.onCellClickListener(toFragment)
             }
         }
