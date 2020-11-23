@@ -10,8 +10,9 @@ import com.example.recyclerviewwithnav.adapter.ItemAdapter
 import com.example.recyclerviewwithnav.data.Datasource
 import com.example.recyclerviewwithnav.databinding.FragmentOneBinding
 import com.example.recyclerviewwithnav.interfaces.CellClickListener
+import com.example.recyclerviewwithnav.interfaces.ItemClickListener
 
-class FragmentOne : Fragment(), CellClickListener
+class FragmentOne : Fragment(), CellClickListener, ItemClickListener
 {
    private lateinit var binding: FragmentOneBinding
 
@@ -24,11 +25,10 @@ class FragmentOne : Fragment(), CellClickListener
 
        val myView: View = binding.root
        //val myView: View = inflater.inflate(R.layout.fragment_one, container, false)
-        // Inflate the layout for this fragment
 
        val myDataset = Datasource().loadListItemModels()
        val recyclerView = binding.recyclerView
-       recyclerView.adapter = ItemAdapter(requireContext(), myDataset, this)
+       recyclerView.adapter = ItemAdapter(requireContext(), myDataset, this, this)
        binding.imageViewUri = "https://cdn.spacetelescope.org/archives/images/screen/heic1302a.jpg"
 
 
@@ -44,5 +44,10 @@ class FragmentOne : Fragment(), CellClickListener
 
     override fun onCellClickListener(id: Int) {
         findNavController().navigate(id)
+    }
+
+    override fun onItemClickListener() {
+        var dialog = MyDialogFragment()
+        dialog.show(getChildFragmentManager(), "myDialog")
     }
 }
