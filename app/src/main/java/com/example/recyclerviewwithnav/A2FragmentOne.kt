@@ -15,6 +15,9 @@ class A2FragmentOne : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = ActSecondFragOneBinding.inflate(inflater, container, false)
+
+        binding.imageViewUri = "https://cdn.spacetelescope.org/archives/images/screen/heic1501a.jpg"
+
         return binding.root
     }
 }
