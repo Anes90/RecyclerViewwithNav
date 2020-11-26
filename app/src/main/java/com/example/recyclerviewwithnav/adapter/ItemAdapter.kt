@@ -4,10 +4,11 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.recyclerviewwithnav.R
 import com.example.recyclerviewwithnav.databinding.ListItemActivityBinding
+import com.example.recyclerviewwithnav.databinding.ListItemBottomSheetBinding
 import com.example.recyclerviewwithnav.databinding.ListItemDialogFragmentBinding
 import com.example.recyclerviewwithnav.databinding.ListItemFragmentBinding
+import com.example.recyclerviewwithnav.interfaces.BottomSheetClickListener
 import com.example.recyclerviewwithnav.interfaces.CellClickListener
 import com.example.recyclerviewwithnav.interfaces.ItemClickListener
 import com.example.recyclerviewwithnav.model.ListItemModel
@@ -74,15 +75,17 @@ import com.example.recyclerviewwithnav.model.ListItemModel
 private const val ITEM_TYPE_ACTIVITY: Int = 0
 private const val ITEM_TYPE_FRAGMENT: Int = 1
 private const val ITEM_TYPE_DIALOG_FRAGMENT: Int = 2
+private const val ITEM_TYPE_BOTTOM_SHEET: Int = 3
 
 class ItemAdapter(
-        private val context: Context,
+    private val context: Context,
         //var listItems: List<ListItemModel>,
-        private val dataset: List<ListItemModel>,
-        private val cellClickListener: CellClickListener,
-        private val itemClickListener: ItemClickListener,
-        private val toActivity: Int = R.id.action_fragmentOne_to_secondActivity2,
-        private val toFragment: Int = R.id.action_fragmentOne_to_fragmentTwo
+    private val dataset: List<ListItemModel>,
+    private val cellClickListener: CellClickListener,
+    private val itemClickListener: ItemClickListener,
+    private val bottomSheetClickListener: BottomSheetClickListener,
+        //private val toActivity: Int = R.id.action_fragmentOne_to_secondActivity2,
+        //private val toFragment: Int = R.id.action_fragmentOne_to_fragmentTwo
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -96,10 +99,14 @@ class ItemAdapter(
             val inflater = LayoutInflater.from(parent.context)
             val binding = ListItemFragmentBinding.inflate(inflater)
             return FragmentViewHolder(binding, cellClickListener)
-        } else {
+        } else if (viewType == ITEM_TYPE_DIALOG_FRAGMENT){
             val inflater = LayoutInflater.from(parent.context)
             val binding = ListItemDialogFragmentBinding.inflate(inflater)
             return DialogFragmentViewHolder(binding, itemClickListener)
+        } else {
+            val inflater = LayoutInflater.from(parent.context)
+            val binding = ListItemBottomSheetBinding.inflate(inflater)
+            return BottomSheetViewHolder(binding, bottomSheetClickListener)
         }
     }
 
@@ -108,8 +115,10 @@ class ItemAdapter(
             return ITEM_TYPE_ACTIVITY
         } else if(dataset[position].item_type == 1){
             return ITEM_TYPE_FRAGMENT
-        } else {
+        } else if(dataset[position].item_type == 2){
             return ITEM_TYPE_DIALOG_FRAGMENT
+        } else {
+            return ITEM_TYPE_BOTTOM_SHEET
         }
     }
 
@@ -125,8 +134,10 @@ class ItemAdapter(
             //    cellClickListener.onCellClickListener(toFragment)
                 //holder.binding.listener.onCellClickListener(toFragment)
                 //holder.binding.setToFragment(toFragment)
-        } else {
+        } else if(getItemViewType(position) == ITEM_TYPE_DIALOG_FRAGMENT){
             (holder as DialogFragmentViewHolder).bind(/*listItems*/dataset[position])
+        } else {
+            (holder as BottomSheetViewHolder).bind(/*listItems*/dataset[position])
         }
     }
 

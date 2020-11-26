@@ -14,4 +14,6 @@
     <string name="this_is_dialog_fragment">This is dialog fragment</string>
     <string name="dialog_fragment_icon">Dialog fragment icon</string>
     <string name="close">Close</string>
+    <string name="bottom_sheet_icon">Bottom sheet icon</string>
+    <string name="galaxy_image">Galaxy image</string>
 </resources>

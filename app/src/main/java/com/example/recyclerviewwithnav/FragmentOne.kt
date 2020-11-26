@@ -1,6 +1,7 @@
 package com.example.recyclerviewwithnav
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,10 +10,11 @@ import androidx.navigation.fragment.findNavController
 import com.example.recyclerviewwithnav.adapter.ItemAdapter
 import com.example.recyclerviewwithnav.data.Datasource
 import com.example.recyclerviewwithnav.databinding.FragmentOneBinding
+import com.example.recyclerviewwithnav.interfaces.BottomSheetClickListener
 import com.example.recyclerviewwithnav.interfaces.CellClickListener
 import com.example.recyclerviewwithnav.interfaces.ItemClickListener
 
-class FragmentOne : Fragment(), CellClickListener, ItemClickListener
+class FragmentOne : Fragment(), CellClickListener, ItemClickListener, BottomSheetClickListener
 {
    private lateinit var binding: FragmentOneBinding
 
@@ -28,9 +30,8 @@ class FragmentOne : Fragment(), CellClickListener, ItemClickListener
 
        val myDataset = Datasource().loadListItemModels()
        val recyclerView = binding.recyclerView
-       recyclerView.adapter = ItemAdapter(requireContext(), myDataset, this, this)
+       recyclerView.adapter = ItemAdapter(requireContext(), myDataset, this, this, this)
        binding.imageViewUri = "https://cdn.spacetelescope.org/archives/images/screen/heic1302a.jpg"
-
 
        return myView
     }
@@ -49,5 +50,11 @@ class FragmentOne : Fragment(), CellClickListener, ItemClickListener
     override fun onItemClickListener() {
         var dialog = MyDialogFragment()
         dialog.show(getChildFragmentManager(), "myDialog")
+    }
+
+    override fun onBottomSheetClickListener() {
+        Log.e("title", "2")
+        val myBottomSheetFragment = MyBottomSheetFragment()
+        myBottomSheetFragment.show(getChildFragmentManager(), "myBottomSheet")
     }
 }
